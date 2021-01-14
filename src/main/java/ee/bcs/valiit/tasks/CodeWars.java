@@ -1,13 +1,11 @@
 package ee.bcs.valiit.tasks;
 
+import org.hibernate.collection.internal.PersistentList;
 import org.terracotta.offheapstore.HashingMap;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CodeWars {
 
@@ -17,9 +15,8 @@ public class CodeWars {
      //   toJadenCase("The_Stealth_Warrior"); // returns "TheStealthWarrior
        // toJadenCase("see_on-test_string_testimiseks");
      // nthPower(new int[] {3,1,2,2}, 3);
-       deleteNth(new int[] {3,3,3,3,1,1},1);
-     //   buddyPairs(381, 4318);
-
+     //  deleteNth(new int[] {31, 2, 3, 1, 1, 2, 1, 2, 3, 3, 2, 4, 5, 3, 1 }, 3);
+        buddyPairs(10, 50);
 
     }
 
@@ -65,62 +62,96 @@ public class CodeWars {
             return -1;
         }
     }
-    // TODO DELETE NTH CODEWARS
+    // DELETE NTH CODEWARS
 
         public static int[] deleteNth(int[] elements, int maxOccurrences) {
-            Map<Integer, Integer> sort = new HashMap<Integer, Integer>();
 
+            ArrayList<Integer> vastused = new ArrayList<>();
+            Map<Integer, Integer> sort2 = new HashMap<Integer, Integer>();
+            for (int i = 0; i< elements.length; i++) {
+                int temp = elements[i];
 
-            for (int i = 0; i < elements.length; i++) {
-                if(!sort.containsKey(elements[i])) {
-                    sort.put(elements[ i],1);
+                if (!sort2.containsKey(temp) ) {
+                    sort2.put(temp, 1);
+                }
+                else {
+                    sort2.put(temp, sort2.get(temp) + 1);
+                }
+
+                if(sort2.get(temp) <= maxOccurrences){
+                    vastused.add(temp);
 
                 }
 
 
-                System.out.println(sort);
+            }
+
+            int[] answer = new int[vastused.toArray().length];
+            for(int u = 0; u< vastused.size(); u++){
+                answer[u] = vastused.get(u);
+            }
 
 
-
+            System.out.println(vastused.toString());
+            for (int l = 0; l < answer.length; l++){
+                System.out.print(answer[l]+ " ");
 
             }
-            return elements;
-        }
+            System.out.println((answer.length));
+
+            return answer;
+
+            }
+
 
             // TODO BUDDY PAIRS CODEWARS
     //  testing(381, 4318, "(1050 1925)");
     //testing(1071625, 1103735, "(1081184 1331967)");
     // testing(2382, 3679, "Nothing");
 
-    public static void buddyPairs(int x, int y){
-                int count = y;
-                while (helper(count) > x) {
-                    for (int i = x; i < y; i++) {
-                        if ( helper(i) == helper(helper(i + 1)) ) {
-                            System.out.println(i);
-                            System.out.println(count);
-                            break;
-                        }
+    public static void buddyPairs(long x, long y){
+            Map<Long,Long> map = new HashMap<Long, Long>();
+            for(long i = x; i <= y; i++){
+           map.put(i, helper(i));
+           }
+           System.out.println(map);
 
-                    }
+
+           for(long i =x; i<y; i++){
+
+
 
 
                 }
-            }
+
+
+               }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 // buddy pairs divisor calculator
-    public static int helper(int x){
-        int sum = 0;
+    // töötab - ära näpi !
+    public static long helper(long x){
+        long sum = 0;
 
-        for(int i =1; i<x; i++){
+        for(long i =1; i<x; i++){
             if(x % i == 0) {
                 sum = sum + i;
-
             }
-
         }
         return sum;
     }
@@ -131,7 +162,7 @@ public class CodeWars {
 
 
 
-
+// TODO harjutus
  public static void test(){
      int a=4;
      int b=5;
