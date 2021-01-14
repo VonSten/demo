@@ -1,10 +1,7 @@
 package ee.bcs.valiit.tasks;
 
-import org.hibernate.collection.internal.PersistentList;
-import org.terracotta.offheapstore.HashingMap;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import java.io.OutputStream;
+import java.math.BigInteger;
 import java.util.*;
 
 public class CodeWars {
@@ -16,8 +13,8 @@ public class CodeWars {
        // toJadenCase("see_on-test_string_testimiseks");
      // nthPower(new int[] {3,1,2,2}, 3);
      //  deleteNth(new int[] {31, 2, 3, 1, 1, 2, 1, 2, 3, 3, 2, 4, 5, 3, 1 }, 3);
-        buddyPairs(10, 50);
-
+      buddyPairs(10, 50);
+  //  Get(100L);
     }
 
     public static void toCamelCase(String input) {
@@ -109,23 +106,65 @@ public class CodeWars {
     //testing(1071625, 1103735, "(1081184 1331967)");
     // testing(2382, 3679, "Nothing");
 
-    public static void buddyPairs(long x, long y){
-            Map<Long,Long> map = new HashMap<Long, Long>();
-            for(long i = x; i <= y; i++){
-           map.put(i, helper(i));
-           }
-           System.out.println(map);
+    public static void buddyPairs(long x, long y) {
+        Map<Long, Long> map = new HashMap<Long, Long>();
+        for (long i = x; i <= y; i++) {
+            map.put(i, helper(i));
+        }
+        System.out.println(map);
 
 
-           for(long i =x; i<y; i++){
+        for (long i = x; i < y; i++) {
 
 
+        }
 
+    }
+                           // TODO PADOVAN
 
+            public static BigInteger Get(long power){
+                Map<Long, BigInteger> padoMap = new HashMap<Long, BigInteger>();
+
+                    padoMap.put(0L, BigInteger.valueOf(1));
+                    padoMap.put(1L, BigInteger.valueOf(1));
+                    padoMap.put(2L, BigInteger.valueOf(1));
+                    padoMap.put(3L, BigInteger.valueOf(2));
+                    padoMap.put(4L, BigInteger.valueOf(2));
+                    padoMap.put(5L, BigInteger.valueOf(3));
+                    padoMap.put(6L, BigInteger.valueOf(4));
+                    padoMap.put(7L, BigInteger.valueOf(5));
+                    padoMap.put(8L, BigInteger.valueOf(7));
+                    padoMap.put(9L, BigInteger.valueOf(9));
+                    padoMap.put(10L, BigInteger.valueOf(12));
+                    padoMap.put(11L, BigInteger.valueOf(16));
+                if (power>0 && power <=12) {
+
+                 //   System.out.println(padoMap.get(power));
+                    return padoMap.get(power);
                 }
 
 
-               }
+                Long counter =power;
+                Long count = 12L;
+               BigInteger padovanx = BigInteger.valueOf(0);
+                        while(count <= counter){
+
+
+            BigInteger padovan = padoMap.get(count -2L).add(padoMap.get(count-3L));
+                    System.out.println(padovan);
+                    padoMap.put(count, padovan);
+                    padoMap.remove(count-4);
+                      count = count + 1L;
+            }
+
+
+                System.out.println(padoMap.get(power));
+                return padovanx;
+
+
+            }
+
+
 
 
 
