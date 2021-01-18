@@ -109,13 +109,15 @@ public class Lesson3 {
 
         int counter = 0;
 
-        for (int i = 1; i <= x; i++) {
-            if ( x % i == 0 ) {
-                counter++;
-            }
-        }
-        return ( counter == 2  || x == 1);
+            for (int i = 1; i <= x; i++) {
+                if ( x % i == 0 ) {
+                    counter++;
+                }
 
+
+
+        }
+        return ( counter == 2);
     }
 }
 

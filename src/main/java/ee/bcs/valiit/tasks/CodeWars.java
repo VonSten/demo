@@ -2,19 +2,22 @@ package ee.bcs.valiit.tasks;
 
 
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CodeWars {
 
     public static void main(String[] args) {
 
-      //  toJadenCase("the-stealth-warrior");// returns "theStealthWarrior"
-     //   toJadenCase("The_Stealth_Warrior"); // returns "TheStealthWarrior
-       // toJadenCase("see_on-test_string_testimiseks");
-     // nthPower(new int[] {3,1,2,2}, 3);
-     //  deleteNth(new int[] {31, 2, 3, 1, 1, 2, 1, 2, 3, 3, 2, 4, 5, 3, 1 }, 3);
-      buddyPairs(10, 50);
-  //  Get(100L);
+        //  toJadenCase("the-stealth-warrior");// returns "theStealthWarrior"
+        //   toJadenCase("The_Stealth_Warrior"); // returns "TheStealthWarrior
+        // toJadenCase("see_on-test_string_testimiseks");
+        // nthPower(new int[] {3,1,2,2}, 3);
+        //  deleteNth(new int[] {31, 2, 3, 1, 1, 2, 1, 2, 3, 3, 2, 4, 5, 3, 1 }, 3);
+        //   Get(100L);
+
+
     }
 
     public static void toCamelCase(String input) {
@@ -61,159 +64,110 @@ public class CodeWars {
     }
     // DELETE NTH CODEWARS
 
-        public static int[] deleteNth(int[] elements, int maxOccurrences) {
+    public static int[] deleteNth(int[] elements, int maxOccurrences) {
 
-            ArrayList<Integer> vastused = new ArrayList<>();
-            Map<Integer, Integer> sort2 = new HashMap<Integer, Integer>();
-            for (int i = 0; i< elements.length; i++) {
-                int temp = elements[i];
+        ArrayList<Integer> vastused = new ArrayList<>();
+        Map<Integer, Integer> sort2 = new HashMap<Integer, Integer>();
+        for (int i = 0; i< elements.length; i++) {
+            int temp = elements[i];
 
-                if (!sort2.containsKey(temp) ) {
-                    sort2.put(temp, 1);
-                }
-                else {
-                    sort2.put(temp, sort2.get(temp) + 1);
-                }
-
-                if(sort2.get(temp) <= maxOccurrences){
-                    vastused.add(temp);
-
-                }
-
-
+            if (!sort2.containsKey(temp) ) {
+                sort2.put(temp, 1);
+            }
+            else {
+                sort2.put(temp, sort2.get(temp) + 1);
             }
 
-            int[] answer = new int[vastused.toArray().length];
-            for(int u = 0; u< vastused.size(); u++){
-                answer[u] = vastused.get(u);
-            }
-
-
-            System.out.println(vastused.toString());
-            for (int l = 0; l < answer.length; l++){
-                System.out.print(answer[l]+ " ");
+            if(sort2.get(temp) <= maxOccurrences){
+                vastused.add(temp);
 
             }
-            System.out.println((answer.length));
-
-            return answer;
-
-            }
-
-
-            // TODO BUDDY PAIRS CODEWARS
-    //  testing(381, 4318, "(1050 1925)");
-    //testing(1071625, 1103735, "(1081184 1331967)");
-    // testing(2382, 3679, "Nothing");
-
-    public static void buddyPairs(long x, long y) {
-        Map<Long, Long> map = new HashMap<Long, Long>();
-        for (long i = x; i <= y; i++) {
-            map.put(i, helper(i));
-        }
-        System.out.println(map);
-
-
-        for (long i = x; i < y; i++) {
 
 
         }
+
+        int[] answer = new int[vastused.toArray().length];
+        for(int u = 0; u< vastused.size(); u++){
+            answer[u] = vastused.get(u);
+        }
+
+
+        System.out.println(vastused.toString());
+        for (int l = 0; l < answer.length; l++){
+            System.out.print(answer[l]+ " ");
+
+        }
+        System.out.println((answer.length));
+
+        return answer;
 
     }
-                           // TODO PADOVAN
-
-            public static BigInteger Get(long power){
-                Map<Long, BigInteger> padoMap = new HashMap<Long, BigInteger>();
-
-                    padoMap.put(0L, BigInteger.valueOf(1));
-                    padoMap.put(1L, BigInteger.valueOf(1));
-                    padoMap.put(2L, BigInteger.valueOf(1));
-                    padoMap.put(3L, BigInteger.valueOf(2));
-                    padoMap.put(4L, BigInteger.valueOf(2));
-                    padoMap.put(5L, BigInteger.valueOf(3));
-                    padoMap.put(6L, BigInteger.valueOf(4));
-                    padoMap.put(7L, BigInteger.valueOf(5));
-                    padoMap.put(8L, BigInteger.valueOf(7));
-                    padoMap.put(9L, BigInteger.valueOf(9));
-                    padoMap.put(10L, BigInteger.valueOf(12));
-                    padoMap.put(11L, BigInteger.valueOf(16));
-                if (power>0 && power <=12) {
-
-                 //   System.out.println(padoMap.get(power));
-                    return padoMap.get(power);
-                }
 
 
-                Long counter =power;
-                Long count = 12L;
-               BigInteger padovanx = BigInteger.valueOf(0);
-                        while(count <= counter){
+
+
+    // TODO PADOVAN
+
+    public static BigInteger Get(long power){
+        Map<Long, BigInteger> padoMap = new HashMap<Long, BigInteger>();
+
+        padoMap.put(0L, BigInteger.valueOf(1));
+        padoMap.put(1L, BigInteger.valueOf(1));
+        padoMap.put(2L, BigInteger.valueOf(1));
+        padoMap.put(3L, BigInteger.valueOf(2));
+        padoMap.put(4L, BigInteger.valueOf(2));
+        padoMap.put(5L, BigInteger.valueOf(3));
+        padoMap.put(6L, BigInteger.valueOf(4));
+        padoMap.put(7L, BigInteger.valueOf(5));
+        padoMap.put(8L, BigInteger.valueOf(7));
+        padoMap.put(9L, BigInteger.valueOf(9));
+        padoMap.put(10L, BigInteger.valueOf(12));
+        padoMap.put(11L, BigInteger.valueOf(16));
+        if (power>0 && power <=12) {
+
+            //   System.out.println(padoMap.get(power));
+            return padoMap.get(power);
+        }
+
+
+        Long counter =power;
+        Long count = 12L;
+        BigInteger padovanx = BigInteger.valueOf(0);
+        while(count <= counter){
 
 
             BigInteger padovan = padoMap.get(count -2L).add(padoMap.get(count-3L));
-                    System.out.println(padovan);
-                    padoMap.put(count, padovan);
-                    padoMap.remove(count-4);
-                      count = count + 1L;
-            }
-
-
-                System.out.println(padoMap.get(power));
-                return padovanx;
-
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// buddy pairs divisor calculator
-    // töötab - ära näpi !
-    public static long helper(long x){
-        long sum = 0;
-
-        for(long i =1; i<x; i++){
-            if(x % i == 0) {
-                sum = sum + i;
-            }
+            System.out.println(padovan);
+            padoMap.put(count, padovan);
+            padoMap.remove(count-4);
+            count = count + 1L;
         }
-        return sum;
+
+
+        System.out.println(padoMap.get(power));
+        return padovanx;
+
+
     }
 
 
 
 
+    // TODO harjutus
+    public static void test(){
+        int a=4;
+        int b=5;
+
+        a = b;
+        b = a;
+
+        // a = b ??
 
 
-
-// TODO harjutus
- public static void test(){
-     int a=4;
-     int b=5;
-
-     a = b;
-     b = a;
-
-     // a = b ??
-
-
-     System.out.println(a + " " + b);
+        System.out.println(a + " " + b);
     }
+
+
 
 
 }
