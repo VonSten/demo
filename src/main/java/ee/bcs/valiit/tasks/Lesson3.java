@@ -1,29 +1,22 @@
 package ee.bcs.valiit.tasks;
 
-import org.springframework.http.converter.json.GsonBuilderUtils;
-
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Lesson3 {
     public static void main(String[] args) {
         // sum(new int[]{1, 2, 3, 4, 5, 6, 7, 8});
-        // factorial(7);
-        //reverseString("sorteeri massiiv suuruse järgi");
+       // System.out.println(factorial(7));
+     //  System.out.println(reverseString("sorteeri massiiv suuruse järgi"));
         // reverseString2("sorteeri massiiv suuruse järgi");
-        // sort(new int[]{3331, 32, 43, 64, 5, 76, 70, 8, 6000, 60300, 33, 1, 5, 2});
+        System.out.println(sort(new int[]{3331, 32, 43, 64, 5, 76, 70, 8, 6000, 60300, 33, 1, 5, 2}));
 
-        System.out.println(isPrime(96));
-        System.out.println(isPrime(97));
-        System.out.println(isPrime(98));
+//        System.out.println(isPrime(96));
+//        System.out.println(isPrime(97));
+//        System.out.println(isPrime(98));
         //System.out.println(helper(48));
 
     }
 
     // summeeri massiiv
-    public static int sum(int[] x) {
+    public static int sumArray(int[] x) {
         int ans = 0;
         for (int i = 0; i < x.length; i++) {
             ans = ans + x[ i ];
@@ -44,13 +37,13 @@ public class Lesson3 {
             answer = answer * i;
 
         }
-        System.out.println(answer);
+     //   System.out.println(answer);
         return answer;
 
     }
 
 
-    public static int[] sort(int[] a) {
+    public static String sort(int[] a) {
         //  sorteeri massiiv suuruse järgi.
         //  kasuta tsükleid, ära kasuta ühtegi olemasolevat sort funktsiooni
         int[] retlist = new int[ a.length ];
@@ -71,12 +64,13 @@ public class Lesson3 {
             retlist[ k ] = min;
             a[ index ] = Integer.MAX_VALUE;
         }
+StringBuilder sb = new StringBuilder();
 
         for (int k = 0; k < a.length; k++) {
-            System.out.print(retlist[ k ] + " ");
+            sb.append(retlist[ k ] + " ");
         }
-        System.out.println();
-        return retlist;
+
+        return sb.toString();
 
     }
 
@@ -90,7 +84,7 @@ public class Lesson3 {
         for (int i = temp.length - 1; i >= 0; i--) {
             sb.append(temp[ i ]);
         }
-        System.out.println(sb.toString());
+       // System.out.println(sb.toString());
         return sb.toString();
     }
 

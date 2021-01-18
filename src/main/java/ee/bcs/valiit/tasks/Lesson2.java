@@ -1,37 +1,29 @@
 package ee.bcs.valiit.tasks;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.*;
-
 public class Lesson2 {
 
 
 
     public static void main(String[] args) {
-        // siia saab kirjutada koodi testimiseks
-        //exercise1();
-        //exercise2(10);
-        // exercise3(5,5);
-        //exercise4(21);
-    //  exercise5(201, 210);
-        fibon(1);
+
     }
 
     // loo 10 elemendile täisarvude massiv
     // loe sisse konsoolist 10 täisarvu
     // trüki arvud välja vastupidises järiekorras
-    public static void exercise1() {
-        int[] output = new int[ 10 ];
-        Scanner scr = new Scanner(System.in);
-        for (int i = 0; i < 10; i++) {
-            int input = scr.nextInt();
-            output[ i ] = input;
+    public static String reverseTen(int[] input) {
+        int[] output = new int[input.length];
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = input.length-1; i > -1; i--) {
+            sb.append(input[i] + " ");
+
         }
 
-        for (int i = 9; i > -1; i--) {
-            System.out.println(output[ i ]);
-        }
+
+
+        return sb.toString();
     }
 
     // prindi välja x esimest paaris arvu
@@ -60,15 +52,19 @@ public class Lesson2 {
     //  et saada taebli kuju
     //  5 võrdle ridu. Kas on mingi seaduspärasus ridade vahel,
     // mis on ja mis võiks olla. Äkki tuleb mõni idee
-    public static void exercise3(int x, int y) {
+    public static String korrutustabel(int x, int y) {
+        StringBuffer sb = new StringBuffer();
         for (int v = 0; v < y; v++) {
-            System.out.println();
-            for (int u = 1; u < x + 1; u++) {
-                System.out.print(( u * ( v + 1 ) + "   " ));
-            }
+            //System.out.println();
 
+            for (int u = 1; u < x + 1; u++) {
+             //   System.out.print(( u * ( v + 1 ) + "   " ));
+             sb.append(u*(v+1)+ "  ");
+            }
+           sb.append("\n");
 
         }
+        return sb.toString();
     }
 
 
@@ -97,12 +93,11 @@ public class Lesson2 {
             i1 = i2;
             i2 = i3;
         }
-     //  System.out.println(ret);
 
        return ret;
     }
 
-    public static void exercise5(int i, int j) {
+    public static String sequence(int i, int j) {
         // https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=36
         // 1 (tee alamfunktsioon) mis leiab 3n+1 sequenci pikkuse
         // kui on paaris / 2 kui on paaritu *3+1
@@ -114,14 +109,14 @@ public class Lesson2 {
                  max = threeN(a);
              }
          }
-        System.out.print(i+" "+ j + " " + " "+ max);
+        return i+" "+ j + " " + " "+ max;
 
 
 
     }
 
 
-
+// eelmise ülesande abifunktsioon
     public static int threeN(int input) {
         int count = 1;
         int number = input;

@@ -11,7 +11,7 @@ public class Lesson3Hard {
 
     public static void main(String[] args) {
         //evenFibonacci(10);
-        //  morseCode("Tee see TEXT morsekoodiks");
+     //  System.out.println(morseCode("Tee see TEXT morsekoodiks"));
         //  randomGame();
     }
 
@@ -85,7 +85,7 @@ public class Lesson3Hard {
         morseMap.put('l', "• − • •");
         morseMap.put('m', "− •");
         morseMap.put('n', "− − −");
-        morseMap.put('o', "• − − •");
+        morseMap.put('o', " − − -");
         morseMap.put('p', "− − • −");
         morseMap.put('r', "• − •");
         morseMap.put('s', "• • •");
@@ -110,8 +110,6 @@ public class Lesson3Hard {
                 sb.append(" * ");
             }
         }
-        System.out.println(( sb.toString() ));
-
 
         return sb.toString();
     }
