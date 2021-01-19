@@ -65,6 +65,11 @@ public String deposit(@PathVariable("a") String account, @PathVariable("b") doub
          BigDecimal inputz = BigDecimal.valueOf(input)  ;
         return Lesson4web.withdrawMoney(account, inputz);
     }
+    @GetMapping("transfer")
+    public String trans(){
+
+        return "Insert accounts and sum to deposit to withdraw";
+    }
 
 
     @GetMapping("transfer/{a}/{b}/{c}")
