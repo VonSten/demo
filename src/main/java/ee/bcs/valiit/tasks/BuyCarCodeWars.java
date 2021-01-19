@@ -35,14 +35,9 @@ public class BuyCarCodeWars {
 
 
         }
-        double ans = Math.round(asset-startPriceNewD);
-        int retTemp = (int) ans;
+        int ans = (int) Math.round(asset-startPriceNewD);
         ret[0] = month-1;
-        ret[1] = retTemp;
-
-        System.out.println(month);
-        System.out.println(asset-startPriceNewD);
-
+        ret[1] = ans;
         return ret;
     }
 

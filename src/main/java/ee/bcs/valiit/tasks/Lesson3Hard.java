@@ -5,14 +5,12 @@ import org.springframework.http.converter.json.GsonBuilderUtils;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Lesson3Hard {
 
     public static void main(String[] args) {
-        //evenFibonacci(10);
-     //  System.out.println(morseCode("Tee see TEXT morsekoodiks"));
-        //  randomGame();
+
+
     }
 
 
@@ -36,36 +34,26 @@ public class Lesson3Hard {
         return temp;
     }
 
-    public static void randomGame ( ) {
-        // kirjuta mäng mis võtab suvalise numbri 0-100, mille kasutaja peab ära arvama
-        // iga kord pärast kasutaja sisestatud täis arvu peab programm ütlema kas number oli suurem või väiksem
-        // ja kasutaja peab saama uuesti arvata
-        // numbri ära aramise korral peab programm välja trükkima mitu katset läks numbri ära arvamiseks
-        Random random = new Random();
-        int guess = random.nextInt(100);
+    public static String randomGame (int input, int guess, int count) {
 
-        Scanner scn = new Scanner(System.in);
-        int input = scn.nextInt();
-        boolean win = false;
-        int count = 0;
 
-        while(!win) {
-            count ++;
+
             if ( input > guess ) {
-                System.out.println("Number on väiksem!!!");
-                input = scn.nextInt();
+                return "Number on väiksem kui " + input;
+
+            }
+            else if ( input < guess ) {
+
+                return "Number on suurem kui " + input;
+
+            } else if ( input == guess ) {
+
             }
 
-            else if( input < guess){
-                System.out.println("Number on suurem!!" );
-                input =  scn.nextInt();
-            }
 
-            else if( input == guess){
-                win = true;
-            }
-        }
-        System.out.println("VÕIT ! " + count+ " -käiku" );
+
+
+        return "VÕIT ! " + count + " -käiku";
     }
 
     public static String morseCode (String text){
