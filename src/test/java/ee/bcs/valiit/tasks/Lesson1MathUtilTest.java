@@ -1,8 +1,7 @@
 package ee.bcs.valiit.tasks;
 
-import org.assertj.core.api.Assertions;
+import ee.bcs.valiit.tasks.harjutused.Lesson1MathUtil;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.util.AssertionErrors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
