@@ -1,4 +1,4 @@
-package ee.bcs.valiit.tasks;
+package ee.bcs.valiit.tasks.harjutused;
 
 public class Lesson3 {
     public static void main(String[] args) {

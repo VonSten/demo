@@ -1,4 +1,4 @@
-package ee.bcs.valiit.tasks;
+package ee.bcs.valiit.tasks.harjutused;
 
 
 import org.springframework.http.converter.json.GsonBuilderUtils;

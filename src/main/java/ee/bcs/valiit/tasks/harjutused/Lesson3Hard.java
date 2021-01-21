@@ -1,10 +1,7 @@
-package ee.bcs.valiit.tasks;
-
-import org.springframework.http.converter.json.GsonBuilderUtils;
+package ee.bcs.valiit.tasks.harjutused;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class Lesson3Hard {
 
