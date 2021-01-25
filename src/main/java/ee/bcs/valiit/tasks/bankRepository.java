@@ -17,8 +17,7 @@ public class bankRepository {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
 
-
-    public void createCustomer(Customer customer){
+    public void createCustomer(Customer customer) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("fn", customer.getFirstName());
         paramMap.put("ln", customer.getLastName());
@@ -30,17 +29,17 @@ public class bankRepository {
     public boolean checkForCustomer(Customer customer) {
         String sql = "SELECT COUNT (id) FROM customers WHERE first_name = :fn AND last_name = :ln";
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("fn",customer.getFirstName());
-        paramMap.put("ln",customer.getLastName());
+        paramMap.put("fn", customer.getFirstName());
+        paramMap.put("ln", customer.getLastName());
 
-        if(jdbcTemplate.queryForObject(sql, paramMap, Integer.class).equals(0)){
+        if (jdbcTemplate.queryForObject(sql, paramMap, Integer.class).equals(0)) {
             return false;
         }
         return true;
     }
 
 
-    public  Integer  getCustomerId(Customer customer) {
+    public Integer getCustomerId(Customer customer) {
 
         String sql = "SELECT id FROM customers WHERE first_name = :fn AND last_name = :ln";
         Map<String, Object> paramMap = new HashMap<>();
@@ -61,7 +60,7 @@ public class bankRepository {
 
     }
 
-    public BigDecimal getBalance(Integer id){
+    public BigDecimal getBalance(Integer id) {
 
         String sql = "SELECT balance FROM accounts WHERE id= :id";
         Map<String, Object> paramMap = new HashMap<>();
@@ -78,13 +77,13 @@ public class bankRepository {
         jdbcTemplate.update(sql2, paramMap);
     }
 
-    public void updateHistory(Integer accFrom, Integer accTo, BigDecimal sum){
+    public void updateHistory(Integer accFrom, Integer accTo, BigDecimal sum) {
 
-        String sql ="INSERT INTO history (from_acc, to_acc, sum_tr, date_tr, time_tr) VALUES (:fr, :t, :sm, :da, :ti)";
+        String sql = "INSERT INTO history (from_acc, to_acc, sum_tr, date_tr, time_tr) VALUES (:fr, :t, :sm, :da, :ti)";
 
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("fr", accFrom );
-        paramMap.put("t",  accTo );
+        paramMap.put("fr", accFrom);
+        paramMap.put("t", accTo);
         paramMap.put("sm", sum);
         paramMap.put("da", LocalDate.now().toString());
         paramMap.put("ti", LocalTime.now().toString());
@@ -92,7 +91,6 @@ public class bankRepository {
 
 
     }
-
 
 
 }

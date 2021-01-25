@@ -19,16 +19,16 @@ public class bankService {
 
     }
 
-    public void createAccount(Customer customer){
+    public void createAccount(Customer customer) {
         Integer id = bankRepository.getCustomerId(customer);
         bankRepository.insertNewAccount(customer, id);
 
     }
 
 
-    public  String depositMoney(Deposit deposit){
+    public String depositMoney(Deposit deposit) {
 
-        if(deposit.getSum().intValue() <=0){
+        if (deposit.getSum().intValue() <= 0) {
             return "saast";
         }
         BigDecimal balance = bankRepository.getBalance(deposit.getAccount());
@@ -43,15 +43,14 @@ public class bankService {
 
     }
 
-    public String getBalance(Balance action){
+    public String getBalance(Balance action) {
 
         return bankRepository.getBalance(action.getAccount()).toString();
     }
 
 
-
-    public void withdraw(Withdraw withdraw){
-        if(withdraw.getSum().intValue() >0 && bankRepository.getBalance(withdraw.getAccount()).compareTo(withdraw.getSum()) > 0){
+    public void withdraw(Withdraw withdraw) {
+        if (withdraw.getSum().intValue() > 0 && bankRepository.getBalance(withdraw.getAccount()).compareTo(withdraw.getSum()) > 0) {
 
             BigDecimal newBalance = bankRepository.getBalance(withdraw.getAccount()).subtract(withdraw.getSum());
             bankRepository.updateBalance(withdraw.getAccount(), newBalance);
@@ -62,9 +61,9 @@ public class bankService {
 
     }
 
-    public void transfer(Transfer transfer){
+    public void transfer(Transfer transfer) {
 
-        if(bankRepository.getBalance(transfer.getAccountFrom()).compareTo(transfer.getSum()) >= 0 && transfer.getSum().intValue() >0 ) {
+        if (bankRepository.getBalance(transfer.getAccountFrom()).compareTo(transfer.getSum()) >= 0 && transfer.getSum().intValue() > 0) {
 
             BigDecimal newFromBalance = bankRepository.getBalance(transfer.getAccountFrom()).subtract(transfer.getSum());
             bankRepository.updateBalance(transfer.getAccountFrom(), newFromBalance);
@@ -77,7 +76,6 @@ public class bankService {
 
         }
     }
-
 
 
 }

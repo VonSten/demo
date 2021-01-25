@@ -7,14 +7,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 
 
-
 public class Bankcontroller {
 
     @Autowired
     private bankService service;
 
     @PostMapping("createcustomer")
-    public void createAcc(@RequestBody  Customer customer){
+    public void createAcc(@RequestBody Customer customer) {
         service.createCustomer(customer);
     }
 
@@ -30,22 +29,21 @@ public class Bankcontroller {
     }
 
     @GetMapping("balance")
-    public String getBalance(@RequestBody Balance balance){
+    public String getBalance(@RequestBody Balance balance) {
 
-        return   service.getBalance(balance);
+        return service.getBalance(balance);
     }
 
-    @PutMapping ("withdraw")
-    public void withdraw(@RequestBody Withdraw withdraw){
+    @PutMapping("withdraw")
+    public void withdraw(@RequestBody Withdraw withdraw) {
         service.withdraw(withdraw);
     }
 
     @PutMapping("transfer")
-    public void transfer(@RequestBody Transfer transfer){
+    public void transfer(@RequestBody Transfer transfer) {
         service.transfer(transfer);
 
     }
-
 
 
 }

@@ -6,10 +6,6 @@ public class Customer {
     private int id;
 
 
-
-
-
-
     public String getFirstName() {
         return firstName;
     }

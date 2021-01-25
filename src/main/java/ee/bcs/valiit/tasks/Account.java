@@ -3,10 +3,9 @@ package ee.bcs.valiit.tasks;
 import java.math.BigDecimal;
 
 public class Account {
-private int id;
-private BigDecimal balance;
-private int owner;
-
+    private int id;
+    private BigDecimal balance;
+    private int owner;
 
 
     public void setId(int id) {
