@@ -16,7 +16,7 @@ public class bankService {
 
     public void createCustomer(@RequestBody Customer customer) {
         if (!bankRepository.checkForCustomer(customer)) {
-            bankRepository.createAcc(customer);
+            bankRepository.createCustomer(customer);
         }
 
     }

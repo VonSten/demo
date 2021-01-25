@@ -19,7 +19,7 @@ public class bankRepository {
 
 
 
-    public void createAcc(Customer customer){
+    public void createCustomer(Customer customer){
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("fn", customer.getFirstName());
         paramMap.put("ln", customer.getLastName());
@@ -28,20 +28,15 @@ public class bankRepository {
         jdbcTemplate.update(sql2, paramMap);
     }
 
-    // TODO SQL COUNT
     public boolean checkForCustomer(Customer customer) {
-        String sql = "SELECT id FROM customers WHERE first_name = :fn AND last_name = :ln";
+        String sql = "SELECT COUNT (id) FROM customers WHERE first_name = :fn AND last_name = :ln";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("fn",customer.getFirstName());
         paramMap.put("ln",customer.getLastName());
-        try {
-            Integer userId = jdbcTemplate.queryForObject(sql, paramMap, Integer.class);
-        }
-        catch (EmptyResultDataAccessException e){
+
+        if(jdbcTemplate.queryForObject(sql, paramMap, Integer.class).equals(0)){
             return false;
         }
-
-
         return true;
     }
 
