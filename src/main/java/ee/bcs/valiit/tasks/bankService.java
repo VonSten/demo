@@ -28,54 +28,54 @@ public class bankService {
     }
 
 
-    public  String depositMoney(Action deposit){
+    public  String depositMoney(Deposit deposit){
 
         if(deposit.getSum().intValue() <=0){
             return "saast";
         }
-        BigDecimal balance = bankRepository.getBalance(deposit);
+        BigDecimal balance = bankRepository.getBalance(deposit.getAccount());
         BigDecimal newBalance = balance.add(deposit.getSum());
 
-        bankRepository.updateBalance(deposit, newBalance);
+        bankRepository.updateBalance(deposit.getAccount(), newBalance);
 
-        deposit.setAccountTo(deposit.getAccount());
-        bankRepository.updateHistory(deposit);
+
+        bankRepository.updateHistory(deposit.getAccount(), deposit.getAccount(), deposit.getSum());
 
         return deposit.getSum().toString() + " RSD was added to account: " + deposit.getAccount();
 
     }
 
-    public String getBalance(Action action){
+    public String getBalance(Balance action){
 
-        return bankRepository.getBalance(action).toString();
+        return bankRepository.getBalance(action.getAccount()).toString();
     }
 
-    public void withdraw(Action withdraw){
-        if(withdraw.getSum().intValue() >0 && bankRepository.getBalance(withdraw).compareTo(withdraw.getSum()) > 0){
 
-            BigDecimal newBalance = bankRepository.getBalance(withdraw).subtract(withdraw.getSum());
-            bankRepository.updateBalance(withdraw, newBalance);
+
+    public void withdraw(Withdraw withdraw){
+        if(withdraw.getSum().intValue() >0 && bankRepository.getBalance(withdraw.getAccount()).compareTo(withdraw.getSum()) > 0){
+
+            BigDecimal newBalance = bankRepository.getBalance(withdraw.getAccount()).subtract(withdraw.getSum());
+            bankRepository.updateBalance(withdraw.getAccount(), newBalance);
         }
 
-        withdraw.setAccountTo(withdraw.getAccount());
-        withdraw.setSum(withdraw.getSum().negate());
-        bankRepository.updateHistory(withdraw);
+
+        bankRepository.updateHistory(withdraw.getAccount(), withdraw.getAccount(), withdraw.getSum().negate());
 
     }
 
-    public void transfer(Action transfer){
+    public void transfer(Transfer transfer){
 
-        if(bankRepository.getBalance(transfer).compareTo(transfer.getSum()) >= 0 && transfer.getSum().intValue() >0 ) {
+        if(bankRepository.getBalance(transfer.getAccountFrom()).compareTo(transfer.getSum()) >= 0 && transfer.getSum().intValue() >0 ) {
 
-            BigDecimal newFromBalance = bankRepository.getBalance(transfer).subtract(transfer.getSum());
-            bankRepository.updateBalance(transfer, newFromBalance);
-            Action transferTo = new Action();
-            transferTo.setAccount(transfer.getAccountTo());
+            BigDecimal newFromBalance = bankRepository.getBalance(transfer.getAccountFrom()).subtract(transfer.getSum());
+            bankRepository.updateBalance(transfer.getAccountFrom(), newFromBalance);
 
 
-            BigDecimal newToBalance = bankRepository.getBalance(transferTo).add(transfer.getSum());
-            bankRepository.updateBalance(transferTo, newToBalance);
-            bankRepository.updateHistory(transfer);
+            BigDecimal newToBalance = bankRepository.getBalance(transfer.getAccountTo()).add(transfer.getSum());
+            bankRepository.updateBalance(transfer.getAccountTo(), newToBalance);
+
+            bankRepository.updateHistory(transfer.getAccountFrom(), transfer.getAccountTo(), transfer.getSum());
 
         }
     }

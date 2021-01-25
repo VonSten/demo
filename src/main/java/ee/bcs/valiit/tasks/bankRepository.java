@@ -62,31 +62,31 @@ public class bankRepository {
 
     }
 
-    public BigDecimal getBalance(Action action){
+    public BigDecimal getBalance(Integer id){
 
         String sql = "SELECT balance FROM accounts WHERE id= :id";
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("id", action.getAccount());
+        paramMap.put("id", id);
         return jdbcTemplate.queryForObject(sql, paramMap, BigDecimal.class);
     }
 
 
-    public void updateBalance(Action action, BigDecimal newBalance) {
+    public void updateBalance(Integer account, BigDecimal newBalance) {
         String sql2 = "UPDATE  accounts SET balance= :bal2  WHERE id= :id2";
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("id2", action.getAccount());
+        paramMap.put("id2", account);
         paramMap.put("bal2", newBalance);
         jdbcTemplate.update(sql2, paramMap);
     }
 
-    public void updateHistory(Action action){
+    public void updateHistory(Integer accFrom, Integer accTo, BigDecimal sum){
 
         String sql ="INSERT INTO history (from_acc, to_acc, sum_tr, date_tr, time_tr) VALUES (:fr, :t, :sm, :da, :ti)";
 
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("fr", action.getAccount() );
-        paramMap.put("t",  action.getAccountTo() );
-        paramMap.put("sm", action.getSum() );
+        paramMap.put("fr", accFrom );
+        paramMap.put("t",  accTo );
+        paramMap.put("sm", sum);
         paramMap.put("da", LocalDate.now().toString());
         paramMap.put("ti", LocalTime.now().toString());
         jdbcTemplate.update(sql, paramMap);

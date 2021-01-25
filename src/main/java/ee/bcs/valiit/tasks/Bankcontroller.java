@@ -27,23 +27,23 @@ public class Bankcontroller {
     }
 
     @PutMapping("deposit")
-    public void deposit(@RequestBody Action deposit) {
+    public void deposit(@RequestBody Deposit deposit) {
         service.depositMoney(deposit);
     }
 
     @GetMapping("balance")
-    public String getBalance(@RequestBody Action balance){
+    public String getBalance(@RequestBody Balance balance){
 
         return   service.getBalance(balance);
     }
 
     @PutMapping ("withdraw")
-    public void withdraw(@RequestBody Action withdraw){
+    public void withdraw(@RequestBody Withdraw withdraw){
         service.withdraw(withdraw);
     }
 
     @PutMapping("transfer")
-    public void transfer(@RequestBody Action transfer){
+    public void transfer(@RequestBody Transfer transfer){
         service.transfer(transfer);
 
     }
