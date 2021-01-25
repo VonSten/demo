@@ -13,8 +13,6 @@ public class Bankcontroller {
     @Autowired
     private bankService service;
 
-
-
     @PostMapping("createcustomer")
     public void createAcc(@RequestBody  Customer customer){
         service.createCustomer(customer);

@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class bankService {
