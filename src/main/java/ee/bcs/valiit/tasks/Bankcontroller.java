@@ -3,6 +3,8 @@ package ee.bcs.valiit.tasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("bank")
 @RestController
 
@@ -44,6 +46,14 @@ public class Bankcontroller {
         service.transfer(transfer);
 
     }
-
+    @GetMapping("history")
+    public String  getHistory(@RequestBody Balance balance){
+     List<History> ret = service.getHistory(balance.getAccount());
+     StringBuilder sb = new StringBuilder();
+     for(History h : ret){
+         sb.append(h.getTime_tr() + " " + h.getDate_tr() + " " + h.getTransferType() + " " + h.getName() + " " + h.getSum_tr() + "\n");
+     }
+     return  sb.toString();
+    }
 
 }

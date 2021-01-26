@@ -2,9 +2,9 @@ package ee.bcs.valiit.tasks;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class bankService {
@@ -12,7 +12,7 @@ public class bankService {
     private bankRepository bankRepository;
 
 
-    public void createCustomer(@RequestBody Customer customer) {
+    public void createCustomer(Customer customer) {
         if (!bankRepository.checkForCustomer(customer)) {
             bankRepository.createCustomer(customer);
         }
@@ -21,7 +21,7 @@ public class bankService {
 
     public void createAccount(Customer customer) {
         Integer id = bankRepository.getCustomerId(customer);
-        bankRepository.insertNewAccount(customer, id);
+        bankRepository.insertNewAccount(id);
 
     }
 
@@ -76,6 +76,10 @@ public class bankService {
 
         }
     }
+  public List<History> getHistory(Integer input){
 
+        return bankRepository.accountHistory(input);
+
+  }
 
 }
