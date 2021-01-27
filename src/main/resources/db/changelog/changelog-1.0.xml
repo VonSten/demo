@@ -33,4 +33,88 @@
             <column name="phone" type="text"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="jaanuari_update" author="Sten">
+        <createTable tableName="customers">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_name" type="text"/>
+            <column name="last_name" type="text"/>
+
+        </createTable>
+
+        <createTable tableName="accounts">
+
+            <column name="id" type="int" autoIncrement="true"/>
+            <column name="balance" type="numeric"/>
+            <column name="owner" type="int">
+                <constraints foreignKeyName="customers_fk_accounts" references="customers(id)"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="history">
+            <column name="id" type="int" autoIncrement="true"/>
+            <column name="from_acc" type="int">
+                <constraints foreignKeyName="accounts_fk_history_from" references="customers(id)"/>
+            </column>
+            <column name="to_acc" type="int">
+                <constraints foreignKeyName="accpounts_fk_history_to" references="customers(id)"/>
+            </column>
+
+            <column name="date_tr" type="text"/>
+            <column name="time_tr" type="text"/>
+        </createTable>
+
+
+    </changeSet>
+
+   <changeSet id="teine_katse" author="Sten">
+       <addColumn tableName="history">
+           <column name="sum_tr" type="numeric"/>
+       </addColumn>
+   </changeSet>
+
+    <changeSet id="kolmas_katse" author="Sten">
+
+        <createTable tableName="test_table">
+            <column name="id" type="int" autoIncrement="true"/>
+            <column name="content" type="text" />
+
+        </createTable>
+
+    </changeSet>
+
+   <changeSet id="katse_neli" author="Sten">
+       <loadData
+                 file="public/names.csv"
+                 schemaName="public"
+                 tableName="customers">
+           <column header="first_name" name="first_name" type="string"/>
+           <column header="last_name" name="last_name" type="string"/>
+
+       </loadData>
+
+   </changeSet>
+<changeSet id="katseviis" author="Sten">
+    <dropForeignKeyConstraint baseTableName="history" constraintName="accounts_fk_history_from"/>
+    <dropForeignKeyConstraint baseTableName="history" constraintName="accpounts_fk_history_to"/>
+
+
+</changeSet>
+
+    <changeSet id="katsekuus" author="Sten">
+        <addPrimaryKey tableName="accounts" columnNames="id"/>
+       <addForeignKeyConstraint baseTableName="history" baseColumnNames="to_acc" constraintName="history_to_constraint" referencedTableName="accounts"
+                                referencedColumnNames="id"/>
+
+
+    </changeSet>
+
+    <changeSet id="katseseitse" author="Sten">
+        <dropTable tableName="book"/>
+        <dropTable tableName="author"/>
+        <dropTable tableName="test_table"/>
+    </changeSet>
+
 </databaseChangeLog>
