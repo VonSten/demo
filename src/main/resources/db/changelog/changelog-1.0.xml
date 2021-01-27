@@ -53,7 +53,7 @@
             </column>
         </createTable>
 
-        <createTable tableName="history">
+        <createTable tableName="historyBody">
             <column name="id" type="int" autoIncrement="true"/>
             <column name="from_acc" type="int">
                 <constraints foreignKeyName="accounts_fk_history_from" references="customers(id)"/>
@@ -70,7 +70,7 @@
     </changeSet>
 
    <changeSet id="teine_katse" author="Sten">
-       <addColumn tableName="history">
+       <addColumn tableName="historyBody">
            <column name="sum_tr" type="numeric"/>
        </addColumn>
    </changeSet>
@@ -97,15 +97,15 @@
 
    </changeSet>
 <changeSet id="katseviis" author="Sten">
-    <dropForeignKeyConstraint baseTableName="history" constraintName="accounts_fk_history_from"/>
-    <dropForeignKeyConstraint baseTableName="history" constraintName="accpounts_fk_history_to"/>
+    <dropForeignKeyConstraint baseTableName="historyBody" constraintName="accounts_fk_history_from"/>
+    <dropForeignKeyConstraint baseTableName="historyBody" constraintName="accpounts_fk_history_to"/>
 
 
 </changeSet>
 
     <changeSet id="katsekuus" author="Sten">
         <addPrimaryKey tableName="accounts" columnNames="id"/>
-       <addForeignKeyConstraint baseTableName="history" baseColumnNames="to_acc" constraintName="history_to_constraint" referencedTableName="accounts"
+       <addForeignKeyConstraint baseTableName="historyBody" baseColumnNames="to_acc" constraintName="history_to_constraint" referencedTableName="accounts"
                                 referencedColumnNames="id"/>
 
 
@@ -115,6 +115,10 @@
         <dropTable tableName="book"/>
         <dropTable tableName="author"/>
         <dropTable tableName="test_table"/>
+    </changeSet>
+
+    <changeSet id="katsekaheksa" author="Sten">
+        <renameTable oldTableName="historyBody" newTableName="history"/>
     </changeSet>
 
 </databaseChangeLog>

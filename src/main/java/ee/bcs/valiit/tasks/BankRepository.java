@@ -78,9 +78,9 @@ public class BankRepository {
         jdbcTemplate.update(sql2, paramMap);
     }
 
-    public void updateHistory(Integer accFrom, Integer accTo, BigDecimal sum) {
+    public void updateHistory(Integer accFrom, Integer accTo, BigDecimal sum)  {
 
-        String sql = "INSERT INTO history (from_acc, to_acc, sum_tr, date_tr, time_tr) VALUES (:fr, :t, :sm, :da, :ti)";
+        String sql = "INSERT INTO history(from_acc, to_acc, sum_tr, date_tr, time_tr) VALUES (:fr, :t, :sm, :da, :ti)";
 
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("fr", accFrom);

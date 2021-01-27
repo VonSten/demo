@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class BankService {
         }
 
 
-
+@Transactional
     public void createAccount(Customer customer) throws EmptyResultDataAccessException, BankExeption {
        try {
            bankRepository.getCustomerId(customer);
@@ -36,7 +37,7 @@ public class BankService {
 
     }
 
-
+@Transactional
     public String depositMoney(Deposit deposit) throws BankExeption {
 
         if (deposit.getSum().intValue() <= 0) {
@@ -53,7 +54,7 @@ public class BankService {
         return deposit.getSum().toString() + " RSD was added to account: " + deposit.getAccount();
 
     }
-
+@Transactional
     public String getBalance(Balance action) throws BankExeption {
         try {
             bankRepository.getBalance(action.getAccount()).toString();
@@ -65,7 +66,7 @@ public class BankService {
     }
 
 
-
+@Transactional
     public void withdraw(Withdraw withdraw) throws BankExeption {
         if (withdraw.getSum().intValue() < 0 || bankRepository.getBalance(withdraw.getAccount()).compareTo(withdraw.getSum()) < 0){
              if(withdraw.getSum().intValue() < 0 ){
@@ -85,13 +86,16 @@ public class BankService {
 
 
 
-
+@Transactional
     public void transfer(Transfer transfer) throws BankExeption {
 
-        if (bankRepository.getBalance(transfer.getAccountFrom()).compareTo(transfer.getSum()) <= 0 || transfer.getSum().intValue() < 0) {
+        if (bankRepository.getBalance(transfer.getAccountFrom()).compareTo(transfer.getSum()) <= 0 || transfer.getSum().intValue() < 0 || transfer.getAccountTo().equals(transfer.getAccountFrom())) {
           if(transfer.getSum().intValue() < 0){
               throw new BankExeption(negSum);
           }
+          else if(transfer.getAccountTo().equals(transfer.getAccountFrom())){
+              throw  new BankExeption("Illegal transaction");
+            }
              throw new BankExeption("Not enough funds");
         }
            else{
