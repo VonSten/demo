@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class bankRepository {
+public class BankRepository {
 
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
@@ -106,10 +106,7 @@ public class bankRepository {
                   HashMap<String, Object> paramMap = new HashMap<>();
                   paramMap.put("acc", account);
 
-        List<History> result = jdbcTemplate.query(sql, paramMap, new HistoryRowMapper());
-
-
-        return result;
+        return jdbcTemplate.query(sql, paramMap, new HistoryRowMapper());
 
     }
 

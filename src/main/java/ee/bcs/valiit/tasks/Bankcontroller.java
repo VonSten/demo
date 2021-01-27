@@ -12,37 +12,38 @@ import java.util.List;
 public class Bankcontroller {
 
     @Autowired
-    private bankService service;
+    private BankService service;
 
     @PostMapping("createcustomer")
-    public void createAcc(@RequestBody Customer customer) {
+    public void createAcc(@RequestBody Customer customer) throws BankExeption {
         service.createCustomer(customer);
+
     }
 
 
     @PostMapping("createacc")
-    public void createAccount(@RequestBody Customer customer) {
+    public void createAccount(@RequestBody Customer customer) throws BankExeption {
         service.createAccount(customer);
     }
 
     @PutMapping("deposit")
-    public void deposit(@RequestBody Deposit deposit) {
+    public void deposit(@RequestBody Deposit deposit) throws BankExeption {
         service.depositMoney(deposit);
     }
 
     @GetMapping("balance")
-    public String getBalance(@RequestBody Balance balance) {
+    public String getBalance(@RequestBody Balance balance) throws BankExeption {
 
         return service.getBalance(balance);
     }
 
     @PutMapping("withdraw")
-    public void withdraw(@RequestBody Withdraw withdraw) {
+    public void withdraw(@RequestBody Withdraw withdraw) throws BankExeption {
         service.withdraw(withdraw);
     }
 
     @PutMapping("transfer")
-    public void transfer(@RequestBody Transfer transfer) {
+    public void transfer(@RequestBody Transfer transfer) throws BankExeption {
         service.transfer(transfer);
 
     }
