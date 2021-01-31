@@ -54,7 +54,6 @@ public class BankService {
         return deposit.getSum().toString() + " RSD was added to account: " + deposit.getAccount();
 
     }
-@Transactional
     public String getBalance(Balance action) throws BankExeption {
         try {
             bankRepository.getBalance(action.getAccount()).toString();

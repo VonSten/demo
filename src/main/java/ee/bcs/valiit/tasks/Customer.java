@@ -3,7 +3,7 @@ package ee.bcs.valiit.tasks;
 public class Customer {
     private String firstName;
     private String lastName;
-    private int id;
+    private Integer id;
 
 
     public String getFirstName() {
@@ -22,11 +22,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
