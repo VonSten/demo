@@ -30,4 +30,11 @@ public class Transfer {
     public void setSum(BigDecimal sum) {
         this.sum = sum;
     }
+
+
+    public Transfer(Integer accountFrom, Integer accountTo, BigDecimal sum) {
+        this.accountFrom = accountFrom;
+        this.accountTo = accountTo;
+        this.sum = sum;
+    }
 }

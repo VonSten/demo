@@ -53,12 +53,12 @@ public class BankServiceHib {
     }
 
 
-    public String getBalance(Balance balance) throws BankExeption {
+    public BigDecimal getBalance(Balance balance) throws BankExeption {
         if(accountsRepo.findAccountsEntityById(balance.getAccount()).isEmpty()){
             throw new BankExeption("Account does not exist");
         }
         else{
-            return accountsRepo.findAccountsEntityById(balance.getAccount()).toString();
+            return accountsRepo.findAccountsEntityById(balance.getAccount()).get(0).getBalance();
         }
 
     }
@@ -134,6 +134,10 @@ public class BankServiceHib {
 
     }
 
+    public Integer accountNumberByOwner(Customer customer){
+       Integer owner =   customersRepository.findCustomersEntityByFirstNameAndLastName(customer.getFirstName(), customer.getLastName()).get(0).getId();
+      return accountsRepo.findAccountsEntityByOwnerOrderByIdDesc(owner).get(0).getId();
 
+    }
 
 }

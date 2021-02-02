@@ -22,4 +22,9 @@ public class Withdraw {
     public void setSum(BigDecimal sum) {
         this.sum = sum;
     }
+
+    public Withdraw(Integer account, BigDecimal sum) {
+        this.account = account;
+        this.sum = sum;
+    }
 }

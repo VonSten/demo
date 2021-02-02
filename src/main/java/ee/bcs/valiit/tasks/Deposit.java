@@ -21,4 +21,12 @@ public class Deposit {
     public void setSum(BigDecimal sum) {
         this.sum = sum;
     }
+
+    public Deposit() {
+    }
+
+    public Deposit(Integer account, BigDecimal sum) {
+        this.account = account;
+        this.sum = sum;
+    }
 }

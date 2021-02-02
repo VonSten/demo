@@ -8,6 +8,5 @@ import java.util.List;
 public interface AccountsRepo extends JpaRepository<AccountsEntity,Integer> {
 
 List<AccountsEntity> findAccountsEntityById(Integer id);
-
-
+List<AccountsEntity> findAccountsEntityByOwnerOrderByIdDesc(Integer id);
 }
