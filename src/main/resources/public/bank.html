@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank</title>
+</head>
+<body>
+
+<br><br>
+
+Account <input id="account-history">
+<button onclick = "result()" id="balance">Get balance</button>
+<br><br>
+
+<div id="222"></div>
+
+<script>
+
+
+    function getBalance() {
+        let balance = {
+            account: document.getElementById('account-history').value
+        }
+
+
+
+        fetch('http://localhost:8081/bankhib/balance',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify(balance)
+            })
+
+            .then(function (response){
+                let json = response.json()
+                if (response.status === 200){
+                    json.then(json => document.getElementById('222').innerHTML = json.message)
+                }
+                else{
+                    json.then(json => document.getElementById('222').innerHTML = json.sum)
+                }
+            })
+
+
+    }
+
+  function result()
+    {
+        let tableElement = document.getElementById("Kanded");
+        let newRowElement = document.createElement("tr");
+        tableElement.appendChild(newRowElement);
+        for (let element of result) {
+            let newRowElement = document.createElement("tr");
+            tableElement.appendChild(newRowElement);
+            //    transactionID
+            let newCellElement = document.createElement("td");
+            newCellElement.innerText = "1";
+            newRowElement.appendChild(newCellElement);
+            //    Kuupäev
+            newCellElement = document.createElement("td");
+            let stamp = element.timeStamp.toString().substr(0, 8);
+            newCellElement.innerText = stamp;
+            newRowElement.appendChild(newCellElement);
+            //    summa
+            newCellElement = document.createElement("td");
+            if (element.type === "Deposit" || element.type === "Transfer incoming") {
+                newCellElement.innerText = element.amount;
+            } else {
+                newCellElement.innerText = element.amount * (-1);
+            }
+            newRowElement.appendChild(newCellElement);
+            //    kommentaar
+            newCellElement = document.createElement("td");
+            newCellElement.innerText = element.comment;
+            newRowElement.appendChild(newCellElement);
+            //    seotud konto
+            newCellElement = document.createElement("td");
+            if (element.type === "Deposit" || element.type === "Transfer incoming") {
+                newCellElement.innerText = element.accountCr;
+            } else {
+                newCellElement.innerText = element.accountDb;
+            }
+            newRowElement.appendChild(newCellElement);
+        }
+
+    }
+
+
+</script>
+
+</body>
+</html>

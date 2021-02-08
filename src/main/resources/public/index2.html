@@ -5,48 +5,76 @@
     <title>Title</title>
 </head>
 <body>
-<a href="#listElements">google</a>
-    <h1>Heading 1</h1>
-    <img src="https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="">
-    <h2>Heading 2</h2>
-    <h3 id="listElements">List elements</h3>
-    <ul>
-        <li>Element 1</li>
-        <li>Element 2</li>
-        <li>Element 3</li>
-    </ul>
-    <ol>
-        <li>Element 1</li>
-        <li>Element 2</li>
-        <li>Element 3</li>
-    </ol>
-    <dl>
-        <dt>Element 1</dt>
-        <dd>Element definition</dd>
-        <dt>Element 2</dt>
-        <dd>Element definition</dd>
-        <dt>Element 3</dt>
-        <dd>Element definition</dd>
-    </dl>
-    <table width="700px" border="1">
+<div style="text-align: center">
+    <table style="margin-left:auto;margin-right:auto;" border="1" width="50%">
         <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>address</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>John</td>
-            <td>Usa</td>
-        </tr>
-        <tr>
-            <td colspan="3"><input type="password"><button>test</button></td>
+            <td>test</td>
         </tr>
     </table>
-    <p style="color:red">
-        Punast värvi tekst
-    </p>
-    <br><br><br><br><br><br><br><br><br><br>
+    <div id="container">
+        Tühi div
+    </div>
+    <form method="post">
+    valik1: <input type="radio" name="a">
+    <input type="radio" name="a">
+    <input type="radio" name="a">
+    <input type="radio" name="b">
+    <input type="radio" name="b">
+    <input type="radio" name="b">
+    <br>
+    hidden: <input type="hidden">
+    <br>
+    text: <input id="textElement" type="text"/>
+    <br>
+    password: <input type="password"/>
+    <br>
+    textarea: <textarea name="aa"></textarea>
+    <br>
+    select:
+    <select>
+        <option>valik 1</option>
+        <option>valik 2</option>
+        <option>valik 3</option>
+    </select>
+    <br>
+    fail: <input type="file"/>
+    <br>
+    number: <input type="number"/>
+    <br>
+    email: <input type="email"/>
+    <br>
+    date: <input type="date">
+    <br>
+    datetime: <input type="datetime-local">
+    <br>
+    week: <input type="week">
+    <br>
+    time: <input type="time">
+    <br>
+    color: <input type="color">
+    <br>
+    range: <input type="range">
+    <br>
+    tel: <input type="tel">
+    <input type="submit">
+    </form>
+
+    <script>
+        function calculateLoan(amount,months,interest = 10, name="John"){
+            return months;
+        }
+        console.log(calculateLoan(1000, 36, 7, "John Snow"));
+        console.log(calculateLoan(1000, 36, 7, "John", "A"));
+        console.log(calculateLoan(1000, 36));
+        console.log(calculateLoan());
+        let element = document.getElementById("textElement");
+        element.value = "midagi";
+        let myElement = document.getElementById("container");
+        let myNewElement = document.createElement("input");
+        myElement.append(myNewElement);
+        myNewElement.value="mingi tekst";
+    </script>
+</div>
 </body>
 </html>
 

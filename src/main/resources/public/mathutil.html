@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mathutil Html</title>
+
+
+
+</head>
+<body style="background-color:olive">
+<p>Min/Max value</p>
+a: <input id="a">
+b: <input id="b">
+<button id="minbut" type="button" onclick="pressButtonFunction()">CHECK MIN</button>
+<button id="maxbut" type="button" onclick="findMax()">CHECK MAX</button>
+vastus: <input id="answer" disabled/>
+
+
+
+
+
+<p>ABS / Is equal?</p>
+NR:<input id ="abs">
+<button id="findAbs" type = "button" onclick="absVal()">CHECK ABS </button>
+<button id ="findEqual" type ="button" onclick="isEqual()">IS EQUAL?</button>
+ vastus: <input id="absanswer" disabled />
+
+
+
+
+<p>3MAX/MIn</p>
+
+1:<input id = "three1">
+2:<input id = "three2">
+3:<input id = "three3">
+<button id = "threeMax" type = button onclick="trMax()">THREE MAX</button>
+<button id = "threeMin" type = button onclick="trMin()">THREE MIN</button>
+Vastus <input id ="three" disabled/>
+
+
+
+
+
+<script>
+    let a=document.getElementById("a");
+    let b=document.getElementById("b");
+    let answer = document.getElementById("answer");
+
+    function findMax(){
+
+       answer.value = Math.max(a.value,b.value);
+
+    }
+
+
+
+    function pressButtonFunction(){
+        answer.value = Math.min(a.value,b.value);
+    }
+
+    let abs = document.getElementById("abs");
+    let answer2=document.getElementById("absanswer");
+
+  function  absVal(){
+        if (abs.value < 0){
+            answer2.value = abs.value *-1;
+        }
+        else{
+            answer2.value = abs.value;
+        }
+
+    }
+
+
+
+  function isEqual() {
+
+      if (abs.value % 2 == 0) {
+          answer2.value = "true";
+      } else {
+          answer2.value = "false";
+      }
+  }
+      let three1=document.getElementById("three1");
+      let three2=document.getElementById("three2");
+      let three3=document.getElementById("three3");
+      let three=document.getElementById("three");
+
+      function trMax(){
+          three.value = Math.max(three1.value, three2.value, three3.value);
+
+
+      }
+      function trMin(){
+          three.value = Math.min(three1.value, three2.value, three3.value);
+
+      }
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

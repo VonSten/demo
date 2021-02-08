@@ -1,80 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BANK</title>
+
+    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Coat_of_arms_of_the_Soviet_Union.svg/984px-Coat_of_arms_of_the_Soviet_Union.svg.png" type="image/png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="script.js"></script>
+
 </head>
 <body>
-<div style="text-align: center">
-    <table style="margin-left:auto;margin-right:auto;" border="1" width="50%">
-        <tr>
-            <td>test</td>
-        </tr>
-    </table>
-    <div id="container">
-        Tühi div
-    </div>
-    <form method="post">
-    valik1: <input type="radio" name="a">
-    <input type="radio" name="a">
-    <input type="radio" name="a">
-    <input type="radio" name="b">
-    <input type="radio" name="b">
-    <input type="radio" name="b">
-    <br>
-    hidden: <input type="hidden">
-    <br>
-    text: <input id="textElement" type="text"/>
-    <br>
-    password: <input type="password"/>
-    <br>
-    textarea: <textarea name="aa"></textarea>
-    <br>
-    select:
-    <select>
-        <option>valik 1</option>
-        <option>valik 2</option>
-        <option>valik 3</option>
-    </select>
-    <br>
-    fail: <input type="file"/>
-    <br>
-    number: <input type="number"/>
-    <br>
-    email: <input type="email"/>
-    <br>
-    date: <input type="date">
-    <br>
-    datetime: <input type="datetime-local">
-    <br>
-    week: <input type="week">
-    <br>
-    time: <input type="time">
-    <br>
-    color: <input type="color">
-    <br>
-    range: <input type="range">
-    <br>
-    tel: <input type="tel">
-    <input type="submit">
-    </form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
-    <script>
-        function calculateLoan(amount,months,interest = 10, name="John"){
-            return months;
-        }
-        console.log(calculateLoan(1000, 36, 7, "John Snow"));
-        console.log(calculateLoan(1000, 36, 7, "John", "A"));
-        console.log(calculateLoan(1000, 36));
-        console.log(calculateLoan());
-        let element = document.getElementById("textElement");
-        element.value = "midagi";
-        let myElement = document.getElementById("container");
-        let myNewElement = document.createElement("input");
-        myElement.append(myNewElement);
-        myNewElement.value="mingi tekst";
-    </script>
+<div class="d-flex flex-column flex-md-row align-items-center  p-3 px-md-4 mb-3  border-bottom box-shadow" style="background-color: #0091ea;">
+
+    <h3 class="my-0 mr-md-auto font-weight-normal">BANK</h3>
+
+    <nav class="my-2 my-md-0 mr-md-3  " >
+        <a class="p-2 text-dark" href="#">History</a>
+
+
+    <a class="btn btn-outline-primary" href='http://8081/logout'>LOGOUT</a>
+    </nav>
+
 </div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+                <div class="accordion" id="accordionExample">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="CreateCustomer">
+
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" >
+                                Create customer
+                            </button>
+                        </h2>
+                        <div id="collapseOne"  class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" >
+                            <div class="accordion-body" >
+                                <strong>Enter name to crate customer.</strong><br>
+
+                                <div class="input-group">
+                                    <span class="input-group-text">First and last name</span>
+                                    <input type="text" aria-label="First name" class="form-control" id="fname-createC">
+                                    <input type="text" aria-label="Last name" class="form-control" id="lname-createC">
+                                    <button class="btn btn-primary" type="button" onclick="createCustomer()">CREATE CUSTOMER</button>
+                                </div>
+
+                            </div>
+                            <div class="text-center  mb-2" id="createcus">    </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Create account
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Enter name to create account.</strong>
+                                <div class="input-group">
+                                    <span class="input-group-text">First and last name</span>
+                                    <input type="text" aria-label="First name" class="form-control" id="fname-createA">
+                                    <input type="text" aria-label="Last name" class="form-control" id="lname-createA">
+                                    <button class="btn btn-primary" type="buton" onclick="createAccount()">CREATE ACCOUNT</button>
+                                </div>
+
+
+
+                            </div>
+                            <div id="createacc" class="text-center mb-2"></div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Deposit
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Enter account and sum to deposit money.</strong>
+
+                                <div class="input-group">
+                                    <span class="input-group-text">Account and sum </span>
+                                    <input type="number" aria-label="account" class="form-control" id="nr-account-deposit">
+                                    <input type="number" aria-label="sum" class="form-control" id="sum-deposit">
+                                    <button class="btn btn-primary" type="button"onclick="deposit()">DEPOSIT</button>
+                                </div>
+
+                            </div>
+
+                            <div id="deposit" class="text-center  mb-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Withdraw
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Enter account and sum to withdraw money.</strong>
+                                <div class="input-group">
+                                    <span class="input-group-text">Account and sum </span>
+                                    <input type="number" aria-label="account" class="form-control" id="nr-account-withdraw">
+                                    <input type="number" aria-label="sum" class="form-control" id="sum-withdraw">
+                                    <button class="btn btn-primary" type="button" onclick="withdraw()">WITHDRAW</button>
+                                </div>
+                            </div>
+                            <div id="withdraw" class="text-center  mb-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBal">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Balance
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingBal" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Enter account to check balance.</strong> <br>
+                                <div class="input-group">
+                                    <span class="input-group-text">Check balance</span>
+                                    <input type="number" aria-label="balance" class="form-control" id="abalance">
+                                    <button class="btn btn-primary" type="button"onclick="getBalance()"> GET BALANCE </button>
+
+                                </div>
+                            </div>
+                            <div id="balancechk" class="text-center  mb-2"></div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTransfer">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTrans" aria-expanded="false" aria-controls="collapseTrans">
+                                Transfer
+                            </button>
+                        </h2>
+                        <div id="collapseTrans" class="accordion-collapse collapse" aria-labelledby="headingTransfer" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>Enter accounts and sum to transfer money</strong><br>
+
+                                <div class="input-group">
+                                    <span class="input-group-text">Accounts from and to: </span>
+                                    <input type="number" aria-label="Account From" class="form-control" id="account-from">
+                                    <input type="number" aria-label="Account To" class="form-control" id="account-to">
+                                    <span class="input-group-text">Sum </span>
+                                    <input type="number" aria-label="Sum" class="form-control" id="transfer-sum">
+                                    <button class="btn btn-primary" type="button"onclick="transfer()">TRANSFER</button>
+                                </div>
+
+                            </div>
+
+                            <div id="transferdiv" class="text-center mb-2"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer class="footer mt-auto py-2  fixed-bottom" style="background-color: #0091ea;">
+    <div class="container">
+        <span class="text-muted"></span>
+    </div>
+
+
+</footer>
+
 </body>
 </html>
 

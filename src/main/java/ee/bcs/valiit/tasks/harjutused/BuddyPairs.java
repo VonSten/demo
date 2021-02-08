@@ -1,8 +1,5 @@
 package ee.bcs.valiit.tasks.harjutused;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class BuddyPairs {
     public static void main(String[] args){
 

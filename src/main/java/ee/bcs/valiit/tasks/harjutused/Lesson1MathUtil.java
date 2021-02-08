@@ -3,24 +3,8 @@ package ee.bcs.valiit.tasks.harjutused;
 public class Lesson1MathUtil {
     private String test;
 
-    public Lesson1MathUtil(String test) {
-        this.test = test;
-    }
 
 
-
-
-    public static void main(String[] args) {
-        System.out.println(min(3,5));
-        System.out.println(max(7,9));
-        System.out.println(abs(-5));
-        System.out.println(isEven(8));
-        System.out.println(isEven(9));
-        System.out.println("kolmest arvust väiksem: " + min3(9, 99, 999));
-        System.out.println("kolmest arvust suurem: " + max3(9, 9, 999));
-
-
-    }
 
     //  tagasta a ja b väikseim väärtus
     public static int min(int a, int b) {

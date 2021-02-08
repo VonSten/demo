@@ -26,7 +26,7 @@ public class CodeWars {
         String[] inputs = input.split("\\W+");
         sb.append(inputs[ 0 ]);
         for (int i = 1; i < inputs.length; i++) {
-            inputs[ i ] = inputs[ i ].toString().substring(0, 1).toUpperCase() + inputs[ i ].toString().substring(1);
+            inputs[ i ] = inputs[ i ].substring(0, 1).toUpperCase() + inputs[ i ].substring(1);
             sb.append(inputs[ i ]);
         }
 
@@ -41,7 +41,7 @@ public class CodeWars {
         String[] inputs = input.split("\\W+");
 
         for (int i = 0; i < inputs.length; i++) {
-            inputs[ i ] = inputs[ i ].toString().substring(0, 1).toUpperCase() + inputs[ i ].toString().substring(1);
+            inputs[ i ] = inputs[ i ].substring(0, 1).toUpperCase() + inputs[ i ].substring(1);
             sb.append(inputs[ i ]+ " ");
         }
         sb.deleteCharAt(sb.length()-1);
@@ -67,7 +67,7 @@ public class CodeWars {
     public static int[] deleteNth(int[] elements, int maxOccurrences) {
 
         ArrayList<Integer> vastused = new ArrayList<>();
-        Map<Integer, Integer> sort2 = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> sort2 = new HashMap<>();
         for (int i = 0; i< elements.length; i++) {
             int temp = elements[i];
 
@@ -108,8 +108,8 @@ public class CodeWars {
 
     // TODO PADOVAN
 
-    public static BigInteger Get(long power){
-        Map<Long, BigInteger> padoMap = new HashMap<Long, BigInteger>();
+    public static BigInteger get(long power){
+        Map<Long, BigInteger> padoMap = new HashMap<>();
 
         padoMap.put(0L, BigInteger.valueOf(1));
         padoMap.put(1L, BigInteger.valueOf(1));

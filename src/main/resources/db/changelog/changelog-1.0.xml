@@ -121,4 +121,61 @@
         <renameTable oldTableName="historyBody" newTableName="history"/>
     </changeSet>
 
+
+<changeSet id="katseüheksa" author="Sten">
+
+    <addDefaultValue tableName="accounts" columnName="balance" defaultValueNumeric="0"/>
+
+
+</changeSet>
+
+<changeSet id="katsekümme" author="Sten">
+
+<addDefaultValue tableName="accounts" columnName="balance" defaultValueNumeric="0" columnDataType="numeric"/>
+</changeSet>
+   <changeSet id="järjekordne katse" author="Sten">
+       <dropForeignKeyConstraint baseTableName="accounts" constraintName="customers_fk_accounts" />
+       <addForeignKeyConstraint baseTableName="accounts" baseColumnNames="owner" constraintName="accpounts_fk_customers" referencedTableName="customers"
+                                referencedColumnNames="id" onDelete="CASCADE"/>
+       
+   </changeSet>
+
+    <changeSet id="666" author="Sten">
+
+        <addColumn tableName="history">
+            <column type="text" name="transfer_type"/>
+        </addColumn>
+        <addColumn tableName="history">
+            <column type= "text"  name="receiver"/>
+
+        </addColumn>
+    </changeSet>
+
+
+
+    <changeSet id="passwordidjne" author="Sten">
+        <createTable tableName="turva">
+                <column name="id" type="int" autoIncrement="true">
+                    <constraints primaryKey="true"/>
+                </column>
+           <column name ="userName" type="text"/>
+            <column name ="pswrd" type="text"/>
+            <column name ="userId" type="int">
+                <constraints foreignKeyName="user_to_customer" references="customers(id)"/>
+            </column>
+
+
+
+        </createTable>
+    </changeSet>
+    <changeSet id="1234555" author="Sten">
+        <renameColumn tableName="turva" oldColumnName="userName" newColumnName="username"/>
+        <renameColumn tableName="turva" oldColumnName="userId" newColumnName="userid" type="numeric"/>
+
+
+    </changeSet>
+
+
+
+
 </databaseChangeLog>
