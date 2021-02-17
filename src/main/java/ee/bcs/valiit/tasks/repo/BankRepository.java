@@ -1,5 +1,7 @@
-package ee.bcs.valiit.tasks;
+package ee.bcs.valiit.tasks.repo;
 
+import ee.bcs.valiit.tasks.dto.Customer;
+import ee.bcs.valiit.tasks.dto.History;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;

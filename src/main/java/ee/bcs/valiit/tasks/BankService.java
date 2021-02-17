@@ -1,5 +1,7 @@
 package ee.bcs.valiit.tasks;
 
+import ee.bcs.valiit.tasks.dto.*;
+import ee.bcs.valiit.tasks.repo.BankRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;

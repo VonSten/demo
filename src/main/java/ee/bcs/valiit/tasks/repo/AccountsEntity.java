@@ -1,4 +1,6 @@
-package ee.bcs.valiit.tasks;
+package ee.bcs.valiit.tasks.repo;
+
+import ee.bcs.valiit.tasks.repo.CustomersEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

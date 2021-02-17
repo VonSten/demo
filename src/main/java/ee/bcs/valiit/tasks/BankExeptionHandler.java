@@ -1,5 +1,7 @@
 package ee.bcs.valiit.tasks;
 
+import ee.bcs.valiit.tasks.dto.BankExeption;
+import ee.bcs.valiit.tasks.dto.BankResponseBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

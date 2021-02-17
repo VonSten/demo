@@ -1,11 +1,10 @@
-package ee.bcs.valiit.tasks;
+package ee.bcs.valiit.tasks.dto;
 
 import java.math.BigDecimal;
 
-public class Balance {
+public class Deposit {
     private Integer account;
-    BigDecimal sum;
-
+    private BigDecimal sum;
 
     public Integer getAccount() {
         return account;
@@ -23,11 +22,11 @@ public class Balance {
         this.sum = sum;
     }
 
-    public Balance(Integer account, BigDecimal sum) {
+    public Deposit() {
+    }
+
+    public Deposit(Integer account, BigDecimal sum) {
         this.account = account;
         this.sum = sum;
     }
 }
-
-
-

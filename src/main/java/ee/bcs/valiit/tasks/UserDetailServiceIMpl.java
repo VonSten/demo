@@ -1,5 +1,7 @@
 package ee.bcs.valiit.tasks;
 
+import ee.bcs.valiit.tasks.repo.UsersEntity;
+import ee.bcs.valiit.tasks.repo.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

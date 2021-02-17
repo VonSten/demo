@@ -1,5 +1,6 @@
 package ee.bcs.valiit.tasks;
 
+import ee.bcs.valiit.tasks.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

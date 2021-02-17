@@ -1,15 +1,12 @@
 package ee.bcs.valiit.tasks;
 
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import liquibase.pro.packaged.C;
+import ee.bcs.valiit.tasks.dto.*;
+import ee.bcs.valiit.tasks.repo.CustomersEntity;
+import ee.bcs.valiit.tasks.repo.HistoryEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -22,34 +19,34 @@ public class BankControllerHib {
     @Autowired
     private BankServiceHib service;
     ModelMapper mapper = new ModelMapper();
-
-    @CrossOrigin
-    @PostMapping("login")
-
-    public String login(@RequestBody LoginCredentials loginCredentials){
-        if(validate(loginCredentials.getUsername(), loginCredentials.getPassword())) {
-            Date now = new Date();
-            Date expiration = new Date(now.getTime() + 1000 * 60 * 60);
-            JwtBuilder builder = Jwts.builder()
-                    .setExpiration(expiration)
-                    .setIssuedAt(now)
-                    .setIssuer("sten")
-                    .signWith(SignatureAlgorithm.HS256, "cGFzc3dvcmQ=")
-                    .claim(loginCredentials.getUsername(), loginCredentials.getPassword());
-            return builder.compact();
-        }
-        return "error";
-    }
-@Autowired
-private PasswordEncoder passwordEncoder;
-    private UsersRepository usersRepository;
-
-    public boolean validate(String userName, String rawPassword){
-        UserDetailServiceIMpl udsi = new UserDetailServiceIMpl();
-        String encodedPassword = udsi.loadUserByUsername(userName).getPassword();
-        return passwordEncoder.matches(rawPassword, encodedPassword);
-
-    }
+//
+//    @CrossOrigin
+//    @PostMapping("login")
+//
+//    public String login(@RequestBody LoginCredentials loginCredentials){
+//        if(validate(loginCredentials.getUsername(), loginCredentials.getPassword())) {
+//            Date now = new Date();
+//            Date expiration = new Date(now.getTime() + 1000 * 60 * 60);
+//            JwtBuilder builder = Jwts.builder()
+//                    .setExpiration(expiration)
+//                    .setIssuedAt(now)
+//                    .setIssuer("sten")
+//                    .signWith(SignatureAlgorithm.HS256, "cGFzc3dvcmQ=")
+//                    .claim(loginCredentials.getUsername(), loginCredentials.getPassword());
+//            return builder.compact();
+//        }
+//        return "error";
+//    }
+//@Autowired
+//private PasswordEncoder passwordEncoder;
+//    private UsersRepository usersRepository;
+//
+//    public boolean validate(String userName, String rawPassword){
+//        UserDetailServiceIMpl udsi = new UserDetailServiceIMpl();
+//        String encodedPassword = udsi.loadUserByUsername(userName).getPassword();
+//        return passwordEncoder.matches(rawPassword, encodedPassword);
+//
+//    }
 
 
 
@@ -82,7 +79,7 @@ private PasswordEncoder passwordEncoder;
     @CrossOrigin
     @PostMapping("balance")
 
-    public  Balance balance(@RequestBody Balance balance) throws BankExeption {
+    public Balance balance(@RequestBody Balance balance) throws BankExeption {
         return new Balance(balance.getAccount(), service.getBalance(balance));
     }
 
