@@ -1,14 +1,8 @@
 package ee.bcs.valiit;
 
-import ee.bcs.valiit.tasks.Balance;
-import ee.bcs.valiit.tasks.BankExeption;
-import ee.bcs.valiit.tasks.BankService;
 import ee.bcs.valiit.tasks.harjutused.Lesson1MathUtil;
-import ee.bcs.valiit.tasks.harjutused.Lesson2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.math.BigDecimal;
 
 public class Lesson1MathUtilTest {
     @Test

@@ -1,6 +1,8 @@
 package ee.bcs.valiit.tasks;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import ee.bcs.valiit.tasks.dto.Customer;
+import ee.bcs.valiit.tasks.dto.Withdraw;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
